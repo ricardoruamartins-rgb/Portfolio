@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ricardo Rua Martins — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --noir: #0a0a0a;
+  --blanc: #f5f3ef;
+  --or: #c9a84c;
+  --or-clair: #e8d5a3;
+  --gris: #6b6b6b;
+  --gris-clair: #e8e6e1;
+  --bg: #f9f8f5;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'DM Sans',sans-serif; background:var(--blanc); color:var(--noir); font-size:16px; line-height:1.7; }
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:18px 60px;
+  background:rgba(245,243,239,0.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--gris-clair);
+}
+.nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; letter-spacing:2px; color:var(--noir); text-decoration:none; }
+.nav-links { display:flex; gap:32px; list-style:none; }
+.nav-links a { text-decoration:none; color:var(--gris); font-size:0.78rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; transition:color 0.2s; }
+.nav-links a:hover { color:var(--or); }
+
+/* HERO */
+#accueil {
+  min-height:100vh; display:grid; grid-template-columns:1fr 1fr;
+  padding-top:70px; background:var(--noir); overflow:hidden;
+}
+.hero-left {
+  display:flex; flex-direction:column; justify-content:center;
+  padding:80px 60px; position:relative; z-index:1;
+}
+.hero-right { position:relative; overflow:hidden; }
+.hero-right img { width:100%; height:100%; object-fit:cover; object-position:top center; filter:brightness(0.75); }
+.hero-right::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to right, var(--noir) 0%, transparent 40%);
+}
+.hero-tag {
+  display:inline-block; font-size:0.72rem; font-weight:500; letter-spacing:3px;
+  text-transform:uppercase; color:var(--or); border:1px solid var(--or);
+  padding:6px 14px; margin-bottom:36px;
+  opacity:0; animation:fadeUp 0.8s 0.2s forwards;
+}
+.hero-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,5vw,4.8rem); font-weight:300; color:var(--blanc);
+  line-height:1.05; margin-bottom:10px;
+  opacity:0; animation:fadeUp 0.8s 0.4s forwards;
+}
+.hero-name em { font-style:italic; color:var(--or); }
+.hero-sub {
+  font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:300;
+  color:rgba(245,243,239,0.55); margin-bottom:32px;
+  opacity:0; animation:fadeUp 0.8s 0.6s forwards;
+}
+.hero-text {
+  font-size:0.92rem; color:rgba(245,243,239,0.7); max-width:440px;
+  line-height:1.8; margin-bottom:44px;
+  opacity:0; animation:fadeUp 0.8s 0.8s forwards;
+}
+.hero-cta { display:inline-flex; gap:16px; opacity:0; animation:fadeUp 0.8s 1s forwards; }
+.btn-primary {
+  display:inline-block; padding:13px 32px; background:var(--or); color:var(--noir);
+  font-size:0.78rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase;
+  text-decoration:none; transition:background 0.2s,transform 0.2s;
+}
+.btn-primary:hover { background:var(--or-clair); transform:translateY(-2px); }
+.btn-outline {
+  display:inline-block; padding:12px 32px; border:1px solid rgba(245,243,239,0.25);
+  color:rgba(245,243,239,0.75); font-size:0.78rem; font-weight:500;
+  letter-spacing:1.5px; text-transform:uppercase; text-decoration:none;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-outline:hover { border-color:var(--or); color:var(--or); }
+
+/* SECTIONS */
+section { padding:90px 60px; }
+.section-label { font-size:0.72rem; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--or); margin-bottom:12px; }
+.section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3.5vw,2.8rem); font-weight:400; line-height:1.2; margin-bottom:56px; }
+
+/* PRÉSENTATION */
+#presentation { background:var(--blanc); }
+.pres-grid { display:grid; grid-template-columns:1fr 1.7fr; gap:70px; align-items:start; max-width:1100px; }
+.pres-photo-wrap { position:relative; }
+.pres-photo-wrap img { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top; display:block; }
+.pres-frame { position:absolute; top:-8px; left:-8px; right:8px; bottom:8px; border:1px solid var(--or); opacity:0.35; pointer-events:none; }
+.pres-text p { font-size:0.95rem; color:#333; margin-bottom:18px; line-height:1.8; }
+.pres-infos { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:36px; padding-top:36px; border-top:1px solid var(--gris-clair); }
+.info-label { font-size:0.7rem; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--gris); margin-bottom:5px; }
+.info-value { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--noir); }
+
+/* COMPÉTENCES */
+#competences { background:var(--bg); }
+.comp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; max-width:1100px; }
+.comp-card { background:var(--blanc); padding:44px 36px; position:relative; overflow:hidden; transition:transform 0.3s; }
+.comp-card:hover { transform:translateY(-4px); }
+.comp-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--or); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
+.comp-card:hover::before { transform:scaleX(1); }
+.comp-num { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:var(--gris-clair); line-height:1; margin-bottom:18px; }
+.comp-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:600; margin-bottom:14px; line-height:1.3; }
+.comp-desc { font-size:0.86rem; color:var(--gris); line-height:1.7; }
+
+/* TRACES */
+#traces { background:var(--blanc); }
+.traces-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; max-width:1100px; }
+.trace-card { border:1px solid var(--gris-clair); padding:36px; transition:border-color 0.3s,box-shadow 0.3s; }
+.trace-card:hover { border-color:var(--or); box-shadow:0 8px 40px rgba(201,168,76,0.07); }
+.trace-full { grid-column:span 2; }
+.trace-tag { display:inline-flex; align-items:center; gap:8px; font-size:0.7rem; font-weight:500; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; }
+.tag-pro { color:var(--or); }
+.tag-univ { color:#4a7c59; }
+.tag-perso { color:#7c4a6e; }
+.tag-dot { width:6px; height:6px; border-radius:50%; background:currentColor; }
+.trace-comp { font-size:0.7rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--gris); margin-bottom:8px; }
+.trace-title { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; margin-bottom:6px; line-height:1.3; }
+.trace-context { font-size:0.8rem; color:var(--gris); margin-bottom:16px; font-style:italic; }
+.trace-body { font-size:0.88rem; color:#444; line-height:1.75; }
+.trace-body p { margin-bottom:10px; }
+.trace-body strong { color:var(--noir); font-weight:500; }
+.trace-logo { height:48px; width:auto; object-fit:contain; margin-bottom:16px; display:block; }
+.trace-img { margin:16px 0; overflow:hidden; }
+.trace-img img { width:100%; display:block; max-height:200px; object-fit:cover; object-position:top; }
+.trace-result { margin-top:18px; padding:14px 18px; background:var(--bg); border-left:3px solid var(--or); font-size:0.86rem; color:#444; line-height:1.6; }
+
+/* PERSO */
+#perso { background:var(--bg); }
+.perso-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; max-width:1100px; }
+.perso-card { background:var(--blanc); padding:0 0 32px; transition:transform 0.3s; overflow:hidden; }
+.perso-card:hover { transform:translateY(-4px); }
+.perso-card img { width:100%; height:200px; object-fit:cover; display:block; margin-bottom:24px; }
+.perso-card-body { padding:0 28px; }
+.perso-title { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; margin-bottom:10px; }
+.perso-text { font-size:0.86rem; color:var(--gris); line-height:1.7; }
+.perso-icon { font-size:2rem; display:block; margin-bottom:12px; }
+
+/* BILAN */
+#bilan { background:var(--noir); }
+#bilan .section-title { color:var(--blanc); }
+.bilan-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:70px; max-width:1100px; align-items:start; }
+.bilan-text p { color:rgba(245,243,239,0.72); font-size:0.93rem; line-height:1.85; margin-bottom:18px; }
+.bilan-competences { display:flex; flex-direction:column; gap:14px; }
+.bilan-item { padding:22px 26px; border:1px solid rgba(201,168,76,0.2); transition:border-color 0.3s; }
+.bilan-item:hover { border-color:var(--or); }
+.bilan-item-title { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:600; color:var(--blanc); margin-bottom:8px; }
+.bilan-bar-wrap { height:2px; background:rgba(255,255,255,0.1); margin:8px 0; }
+.bilan-bar { height:100%; background:linear-gradient(to right,var(--or),var(--or-clair)); }
+.bilan-item-desc { font-size:0.8rem; color:rgba(245,243,239,0.45); }
+
+/* CONTACT */
+#contact { background:var(--blanc); text-align:center; padding:70px 60px; }
+#contact .section-title { margin-bottom:16px; }
+.contact-sub { font-size:0.95rem; color:var(--gris); margin-bottom:44px; max-width:480px; margin-left:auto; margin-right:auto; }
+.contact-links { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+.contact-link { display:inline-flex; align-items:center; gap:8px; padding:13px 30px; border:1px solid var(--gris-clair); text-decoration:none; color:var(--noir); font-size:0.82rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; transition:border-color 0.2s,color 0.2s; }
+.contact-link:hover { border-color:var(--or); color:var(--or); }
+
+footer { background:var(--noir); text-align:center; padding:28px; font-size:0.75rem; color:rgba(245,243,239,0.25); letter-spacing:1px; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s,transform 0.7s; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:900px) {
+  nav { padding:14px 20px; }
+  .nav-links { display:none; }
+  section { padding:60px 20px; }
+  #accueil { grid-template-columns:1fr; }
+  .hero-right { height:60vw; }
+  .hero-left { padding:80px 20px 40px; }
+  .pres-grid,.bilan-grid { grid-template-columns:1fr; gap:36px; }
+  .comp-grid,.perso-grid { grid-template-columns:1fr; }
+  .traces-grid { grid-template-columns:1fr; }
+  .trace-full { grid-column:span 1; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#accueil" class="nav-logo">R. RUA MARTINS</a>
+  <ul class="nav-links">
+    <li><a href="#presentation">Profil</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#traces">Traces</a></li>
+    <li><a href="#bilan">Bilan</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="accueil">
+  <div class="hero-left">
+    <span class="hero-tag">Portfolio professionnel · BUT TC Marketing Digital</span>
+    <h1 class="hero-name">Ricardo<br><em>Rua Martins</em></h1>
+    <p class="hero-sub">Chef de projet marketing · Futur étudiant en Master</p>
+    <p class="hero-text">Étudiant en 3e année de BUT Techniques de Commercialisation à l'IUT de Sceaux. Stage chez TotalEnergies au service Fidélité, contribuant au lancement national du programme Club. En 2026, j'intègrerai un Master Marketing, Communication et Stratégie de Marque, en alternance dans l'automobile.</p>
+    <div class="hero-cta">
+      <a href="#traces" class="btn-primary">Voir mes réalisations</a>
+      <a href="#contact" class="btn-outline">Me contacter</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="portfolio_imgs/photo.jpeg" alt="Ricardo Rua Martins">
+  </div>
+</section>
+
+<!-- PRÉSENTATION -->
+<section id="presentation">
+  <div class="section-label reveal">À propos</div>
+  <h2 class="section-title reveal">Mon profil &<br>mon projet professionnel</h2>
+  <div class="pres-grid">
+    <div class="pres-photo-wrap reveal">
+      <div class="pres-frame"></div>
+      <img src="portfolio_imgs/photo.jpeg" alt="Ricardo Rua Martins">
+    </div>
+    <div class="pres-text reveal">
+      <p>Je m'appelle Ricardo Rua Martins, j'ai 20 ans et je suis en troisième année de BUT Techniques de Commercialisation, parcours Marketing Digital, à l'IUT de Sceaux. Mon stage de fin d'études au sein du service Fidélité de TotalEnergies m'a permis de contribuer à un projet stratégique d'envergure nationale : le lancement du programme Club, déployé sur plus de 3 200 stations en France.</p>
+      <p>Cette expérience a confirmé mon attrait pour le marketing digital, la gestion de la relation client et la stratégie de marque. J'ai appris à travailler avec des données réelles, à piloter des KPI, à analyser des comportements clients et à contribuer à des campagnes CRM à grande échelle.</p>
+      <p>À la rentrée 2026, mon objectif est d'intégrer un <strong>Master en Marketing, Communication et Stratégie de Marque</strong>, en alternance dans le secteur <strong>automobile</strong> — un univers qui me passionne pour ses enjeux de désirabilité de marque et d'expérience premium.</p>
+      <div class="pres-infos">
+        <div><div class="info-label">Formation</div><div class="info-value">BUT TC Marketing Digital<br>IUT de Sceaux</div></div>
+        <div><div class="info-label">Stage</div><div class="info-value">TotalEnergies<br>Chef de projet marketing</div></div>
+        <div><div class="info-label">Projet 2026</div><div class="info-value">Master Marketing &<br>Stratégie de Marque</div></div>
+        <div><div class="info-label">Secteur visé</div><div class="info-value">Automobile<br>(alternance)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="section-label reveal">Référentiel BUT TC</div>
+  <h2 class="section-title reveal">Mes 3 compétences clés</h2>
+  <div class="comp-grid">
+    <div class="comp-card reveal">
+      <div class="comp-num">01</div>
+      <div class="comp-title">Gérer une activité digitale</div>
+      <p class="comp-desc">Piloter des opérations marketing digitales, analyser des KPI, exploiter des données CRM et contribuer à l'amélioration continue d'un dispositif de fidélisation à grande échelle.</p>
+    </div>
+    <div class="comp-card reveal">
+      <div class="comp-num">02</div>
+      <div class="comp-title">Développer un projet e-business</div>
+      <p class="comp-desc">Concevoir et déployer un projet digital de A à Z : étude du besoin, conception d'une solution numérique, développement d'une interface utilisateur et mise en marché.</p>
+    </div>
+    <div class="comp-card reveal">
+      <div class="comp-num">03</div>
+      <div class="comp-title">Vendre une offre commerciale</div>
+      <p class="comp-desc">Construire une argumentation commerciale adaptée à la cible, valoriser une offre différenciante et contribuer à des actions promotionnelles orientées résultats.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRACES -->
+<section id="traces">
+  <div class="section-label reveal">Preuves de compétences</div>
+  <h2 class="section-title reveal">Mes traces de réalisation</h2>
+  <div class="traces-grid">
+
+    <div class="trace-card reveal">
+      <div class="trace-tag tag-pro"><span class="tag-dot"></span>Expérience professionnelle</div>
+      <div class="trace-comp">Compétence 1 — Gérer une activité digitale</div>
+      <img src="portfolio_imgs/total_logo.png" alt="TotalEnergies" class="trace-logo">
+      <h3 class="trace-title">Suivi des KPI du programme Club TotalEnergies</h3>
+      <p class="trace-context">Stage — TotalEnergies, service Fidélité, 2026</p>
+      <div class="trace-body">
+        <p>Mission de pilotage et d'analyse des indicateurs de performance du programme Club via des tableaux de bord Power BI en quasi temps réel.</p>
+        <p>Cette trace illustre ma capacité à <strong>analyser et exploiter des données marketing en contexte professionnel réel</strong>. Il fallait suivre les KPI clés — adhésions, transactions, taux d'ouverture CRM, comportement sur l'appli — pour identifier des signaux d'alerte et alimenter les décisions opérationnelles de l'équipe.</p>
+        <p>J'ai produit des synthèses hebdomadaires partagées en réunion, en interagissant avec les équipes CRM, Marketing digital et Expérience client.</p>
+      </div>
+      <div class="trace-result"><strong>Résultat :</strong> Suivi d'une base dépassant 700 000 membres, taux d'ouverture emails ~40 % (vs 20-25 % secteur), identification de leviers clés (migration appli, points dormants).</div>
+    </div>
+
+    <div class="trace-card reveal">
+      <div class="trace-tag tag-univ"><span class="tag-dot"></span>Cursus universitaire</div>
+      <div class="trace-comp">Compétence 1 — Gérer une activité digitale</div>
+      <h3 class="trace-title">Mémoire de stage : le programme Club comme levier stratégique</h3>
+      <p class="trace-context">Mémoire de fin d'études — IUT de Sceaux, BUT TC, 2026</p>
+      <div class="trace-body">
+        <p>Mémoire de 30 pages portant sur la problématique : <em>en quoi le lancement d'un programme de fidélisation constitue-t-il un levier stratégique pour différencier TotalEnergies de ses concurrents ?</em></p>
+        <p>Cette trace illustre ma capacité à <strong>analyser un dispositif digital dans son environnement stratégique</strong>, en mobilisant une méthodologie rigoureuse : analyse sectorielle, entretiens semi-directifs, exploitation de données réelles.</p>
+      </div>
+      <div class="trace-result"><strong>Résultat :</strong> Analyse PESTEL, forces de Porter, SWOT, cadre théorique (Kotler, Oliver, Morgan & Hunt) et recommandations stratégiques issues du terrain.</div>
+    </div>
+
+    <div class="trace-card reveal">
+      <div class="trace-tag tag-univ"><span class="tag-dot"></span>Cursus universitaire</div>
+      <div class="trace-comp">Compétence 2 — Développer un projet e-business</div>
+      <img src="portfolio_imgs/ballerz_logo.png" alt="Ballerz" class="trace-logo">
+      <h3 class="trace-title">Ballerz — Plateforme de mise en relation pour le football amateur</h3>
+      <p class="trace-context">Projet de groupe — IUT de Sceaux, BUT TC, 2024-2025</p>
+      <div class="trace-body">
+        <p>Conception et développement de <strong>Ballerz</strong>, une plateforme web permettant à des joueurs de trouver des partenaires pour un five et de localiser des terrains disponibles à proximité.</p>
+        <p>Cette trace illustre ma capacité à <strong>concevoir un projet e-business de A à Z</strong> : étude du besoin, modèle économique, UX/UI, développement et stratégie de lancement.</p>
+      </div>
+      <div class="trace-img"><img src="portfolio_imgs/ballerz_home.png" alt="Ballerz - Accueil"></div>
+      <div class="trace-img"><img src="portfolio_imgs/ballerz_match.png" alt="Ballerz - Matchs"></div>
+      <div class="trace-result"><strong>Résultat :</strong> Site fonctionnel présenté devant jury avec pitch complet — business model, maquettes, stratégie d'acquisition, roadmap produit.</div>
+    </div>
+
+    <div class="trace-card reveal">
+      <div class="trace-tag tag-pro"><span class="tag-dot"></span>Expérience professionnelle</div>
+      <div class="trace-comp">Compétence 2 — Développer un projet e-business</div>
+      <img src="portfolio_imgs/total_logo.png" alt="TotalEnergies" class="trace-logo">
+      <h3 class="trace-title">Contribution au déploiement digital du programme Club</h3>
+      <p class="trace-context">Stage — TotalEnergies, service Fidélité, 2026</p>
+      <div class="trace-body">
+        <p>Suivi de la performance de l'application mobile du Club et des campagnes CRM liées au lancement. Plus de 500 000 visiteurs uniques sur l'appli depuis le lancement, taux de conversion vers la nouvelle version : 10,4 %.</p>
+        <p>Cette trace illustre ma capacité à <strong>contribuer au pilotage d'un projet e-business à grande échelle</strong>, en analysant les parcours utilisateurs et en formulant des recommandations concrètes.</p>
+      </div>
+      <div class="trace-result"><strong>Résultat :</strong> Recommandation d'une campagne de migration avec incentive (points bonus), intégrée dans les pistes d'évolution du programme.</div>
+    </div>
+
+    <div class="trace-card reveal">
+      <div class="trace-tag tag-pro"><span class="tag-dot"></span>Expérience professionnelle</div>
+      <div class="trace-comp">Compétence 3 — Vendre une offre commerciale</div>
+      <img src="portfolio_imgs/total_logo.png" alt="TotalEnergies" class="trace-logo">
+      <h3 class="trace-title">Animation commerciale de la base membres Club</h3>
+      <p class="trace-context">Stage — TotalEnergies, service Fidélité, 2026</p>
+      <div class="trace-body">
+        <p>Organisation d'actions commerciales exclusives pour les membres Club : jeux concours avec dotations premium (places 24 Heures du Mans, expériences VIP...) et études post-opérations sur les promotions en station.</p>
+        <p>Cette trace illustre ma capacité à <strong>concevoir des actions commerciales orientées fidélisation</strong>, en valorisant une offre différenciante via des outils CRM ciblés.</p>
+      </div>
+      <div class="trace-result"><strong>Résultat :</strong> Pics d'engagement mesurables après chaque opération — preuve que les récompenses exclusives créent une fidélité affective durable.</div>
+    </div>
+
+    <div class="trace-card reveal">
+      <div class="trace-tag tag-univ"><span class="tag-dot"></span>Cursus universitaire</div>
+      <div class="trace-comp">Compétence 3 — Vendre une offre commerciale</div>
+      <h3 class="trace-title">Veille concurrentielle et positionnement du Club</h3>
+      <p class="trace-context">Stage — TotalEnergies, service Fidélité, 2026</p>
+      <div class="trace-body">
+        <p>Mission de veille concurrentielle portant sur les programmes de fidélité de Shell GO+, EG Max et des GMS, réalisée en continu tout au long du stage.</p>
+        <p>Cette trace illustre ma capacité à <strong>analyser l'environnement concurrentiel pour construire une argumentation différenciante</strong>. J'ai produit des notes de synthèse régulières partagées avec les équipes marketing.</p>
+      </div>
+      <div class="trace-result"><strong>Résultat :</strong> Identification des avantages différenciants du Club (logique multiservice vs concurrents centrés carburant), intégrés dans les argumentaires et supports de communication.</div>
+    </div>
+
+    <!-- TRACE PERSO -->
+    <div class="trace-card trace-full reveal">
+      <div class="trace-tag tag-perso"><span class="tag-dot"></span>Vie personnelle</div>
+      <div class="trace-comp">Passions & engagements</div>
+      <h3 class="trace-title">Automobile de luxe, voyages et engagement associatif</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-top:20px;">
+        <div>
+          <img src="portfolio_imgs/ferrari.png" alt="Passion automobile" style="width:100%; height:180px; object-fit:cover; display:block; margin-bottom:14px;">
+          <p style="font-size:0.88rem; color:#444; line-height:1.7;"><strong>Automobile de luxe</strong> — Je suis de près les stratégies de marque des constructeurs premium : lancements, communication, événements sportifs (GT, F1). Ce qui m'attire, c'est la façon dont ces marques construisent leur désirabilité. Directement lié à mon projet professionnel.</p>
+        </div>
+        <div>
+          <img src="portfolio_imgs/voyage.jpeg" alt="Voyages" style="width:100%; height:180px; object-fit:cover; display:block; margin-bottom:14px;">
+          <p style="font-size:0.88rem; color:#444; line-height:1.7;"><strong>Voyages</strong> — Chaque destination est une occasion de comprendre comment d'autres marchés fonctionnent et comment les marques s'adaptent à des contextes culturels différents.</p>
+        </div>
+        <div style="display:flex; flex-direction:column;">
+          <div style="height:180px; background:var(--bg); display:flex; align-items:center; justify-content:center; margin-bottom:14px; font-size:3rem;">❤️</div>
+          <p style="font-size:0.88rem; color:#444; line-height:1.7;"><strong>Restos du Cœur</strong> — Participation bénévole. Une expérience qui m'a appris autant sur l'organisation collective que sur l'écoute active et l'engagement concret pour une cause.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BILAN -->
+<section id="bilan">
+  <div class="section-label reveal" style="color:var(--or)">Synthèse</div>
+  <h2 class="section-title reveal">Bilan de compétences<br>& profil professionnel</h2>
+  <div class="bilan-grid">
+    <div class="bilan-text reveal">
+      <p>Les trois compétences développées dans ce portfolio dessinent un profil de <strong style="color:var(--or)">chef de projet marketing digital</strong>, à l'aise aussi bien dans l'analyse de données que dans la conception d'expériences client et la mise en œuvre d'actions commerciales.</p>
+      <p>Mon passage chez TotalEnergies m'a donné une vision très concrète du marketing opérationnel dans une grande organisation : travailler en transverse, piloter des indicateurs réels, mesurer l'impact de ses actions et s'adapter en continu.</p>
+      <p>Mon profil correspond à des postes de <strong style="color:var(--or)">chargé de projet marketing</strong>, <strong style="color:var(--or)">coordinateur marketing digital</strong> ou <strong style="color:var(--or)">chef de projet CRM</strong> — avec une préférence forte pour l'<strong style="color:var(--or)">automobile premium</strong>.</p>
+    </div>
+    <div class="bilan-competences reveal">
+      <div class="bilan-item">
+        <div class="bilan-item-title">Gérer une activité digitale</div>
+        <div class="bilan-bar-wrap"><div class="bilan-bar" style="width:88%"></div></div>
+        <div class="bilan-item-desc">Pilotage KPI, CRM, Power BI, analyse comportementale</div>
+      </div>
+      <div class="bilan-item">
+        <div class="bilan-item-title">Développer un projet e-business</div>
+        <div class="bilan-bar-wrap"><div class="bilan-bar" style="width:80%"></div></div>
+        <div class="bilan-item-desc">Conception produit, UX, pitch, stratégie de lancement</div>
+      </div>
+      <div class="bilan-item">
+        <div class="bilan-item-title">Vendre une offre commerciale</div>
+        <div class="bilan-bar-wrap"><div class="bilan-bar" style="width:75%"></div></div>
+        <div class="bilan-item-desc">Animation commerciale, veille, argumentation différenciante</div>
+      </div>
+      <div class="bilan-item">
+        <div class="bilan-item-title">Stratégie de marque</div>
+        <div class="bilan-bar-wrap"><div class="bilan-bar" style="width:65%"></div></div>
+        <div class="bilan-item-desc">En développement — objectif Master 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label reveal">Restons en contact</div>
+  <h2 class="section-title reveal">Me contacter</h2>
+  <p class="contact-sub reveal">Disponible pour une alternance dans le secteur automobile à partir de septembre 2026.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:ricardo.ruamartins@email.com" class="contact-link">✉ Email</a>
+    <a href="https://linkedin.com/in/ricardoruamartins" class="contact-link" target="_blank">in LinkedIn</a>
+  </div>
+</section>
+
+<footer>© 2026 Ricardo Rua Martins — Portfolio BUT TC Marketing Digital — IUT de Sceaux</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => observer.observe(el));
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id'); });
+  navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--or)' : ''; });
+});
+</script>
+</body>
+</html>
